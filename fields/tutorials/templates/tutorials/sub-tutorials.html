@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+    Самоучитель - подсекции
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'tutorials\css\selflearn.css' %}"> 
+    <link rel="stylesheet" href="{% static 'tutorials\css\selflearn-in.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css\blocks\pages-nav.css' %}">
+{% endblock styles %}
+
+{% block scripts %}
+
+{% endblock scripts %}
+    
+
+{% block main %}
+    <section class="selfEducation section-offset">
+
+        <div class="container">
+
+            <div class="selfEducation__wrapper">
+
+                <h2 class="selfEducation__title">{{ tutorial.title }}</h2>
+                <p class="selfEducation__descr section-descr lesson__offset">
+                    {{ tutorial.descr}}
+                </p>
+            </div>
+
+            {% if subsections %}
+                <ul class="lesson__list">
+                    {% for subsection in subsections %}
+                        <li class="lesson__item">
+                            <h3 class="lesson__title section-title">{{ subsection.title }}</h3>
+
+                            <p class="lesson__descr section-descr">
+                                {{ subsection.short_descr }}
+                            </p>
+
+                            <a href="{% url 'index:tutorials:articles-list' title=tutorial.title sub_title=subsection.title %}">
+                                <button class="lesson__btn btn btn__dark">Перейти учиться</button>
+                            </a>
+                            
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h3>No tutorials yet</h3>
+            {% endif %}
+            
+
+            <div class="pages-nav">
+                <p class="pages-nav__arrow">Назад</p>
+                <ul class="pages-nav__list">
+                    <li class="pages-nav__item pages-nav__item--active">1</li>
+                    <li class="pages-nav__item">2</li>
+                    <li class="pages-nav__item">3</li>
+                    <li class="pages-nav__item">4</li>
+                    <li class="pages-nav__item">5</li>
+                </ul>
+                <p class="pages-nav__arrow">Вперед</p>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock main %}
