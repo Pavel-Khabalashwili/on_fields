@@ -31,7 +31,7 @@
 
     <section class="info section-offset">
         <div class="container__small">
-            <p class="info__txt section-descr"> {{ article.descr }} </p>
+            <p class="info__txt section-descr"> {{ article.descr | safe }} </p>
         </div>
     </section>
 {% endblock main %}

@@ -4,7 +4,10 @@ from django.db.models.query import QuerySet
 from django.http.request import HttpRequest
 from .models import Tutorial, Tutorial_subsection, Article
 from django.utils.html import format_html
+from django_summernote.admin import SummernoteModelAdmin
 
+class MySummernoteAdmin(SummernoteModelAdmin):
+    exclude = ('attachment',)
 
 # Сокращенный вывод текста и отрисовка фото
 @admin.register(Tutorial)
@@ -64,11 +67,13 @@ class Tutorial_subsectionAdmin(admin.ModelAdmin):
         return super().get_queryset(request).select_related("id_tutorial")
     
 @admin.register(Article)
-class ArticleAdmin(admin.ModelAdmin):
+class ArticleAdmin(SummernoteModelAdmin):
     list_display       = "id", "title", "small_short_descr", "small_descr", "pub_date", "sub_tutorial",
     list_display_links = "id", "title", "small_short_descr", "small_descr", "pub_date",
     ordering = "pk",
     search_fields = "title", "short_descr",
+    
+    summernote_fields = ('descr',)
     
     def small_short_descr(self, obj : Article) -> str:
         if len(obj.short_descr) < 48:
@@ -88,5 +93,3 @@ class ArticleAdmin(admin.ModelAdmin):
     
     def get_queryset(self, request: HttpRequest):
         return super().get_queryset(request).select_related("id_subsection")
-
-# admin.site.ordering = ('Tutorial', 'Tutorial_subsection', 'Article')

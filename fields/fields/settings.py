@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'django_summernote',
     'index.apps.IndexConfig',
     'tutorials.apps.TutorialsConfig',
     'news.apps.NewsConfig',
