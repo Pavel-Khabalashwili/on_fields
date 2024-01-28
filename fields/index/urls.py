@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import index
+from .views import index, send_email
 
 
 
@@ -9,6 +9,7 @@ urlpatterns = [
     path("", index, name="index"),
     path("tutorials/", include("tutorials.urls")),
     path("news/", include("news.urls")),
+    path("send-email/", send_email, name="send_email"),
 ]
 
 

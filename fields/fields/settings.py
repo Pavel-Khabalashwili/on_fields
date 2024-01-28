@@ -104,3 +104,25 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Отправка почты -------------------------------------------------------------------------
+# Примечание
+# Валидация и формы отправка письма реализованна как на клиентской части так и на серверной.
+# Клиентска через JS, срверная через правила в forms.py и функцию в views.py, urls, html
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'onFileds@yandex.ru'
+EMAIL_HOST_PASSWORD = 'xrjdpsnkgszmcrns'
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
+
+# пороль: max214zet
+# логин:  onFileds@yandex.ru
+# пороль - smtp: xrjdpsnkgszmcrns

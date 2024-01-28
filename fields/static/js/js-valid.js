@@ -9,13 +9,10 @@ new JustValidate (".js-form-connection", {
         maxLength: 30,
       },
   
-      tel:{
+      textarea: {
         required: true,
-        function: (name, value) => {
-          const phone = selector.inputmask.unmaskedvalue();
-          console.log(phone);
-          return Number(phone) && phone.length ===10;
-        },
+        minLength: 10,
+        maxLength: 300,
       },
     },
   
@@ -26,9 +23,10 @@ new JustValidate (".js-form-connection", {
         maxLength: 'Необходимо ввести только имя',
       },
   
-      tel:{
-        required: 'Поле обязательно к заполнению ',
-        function:'Некорректный ввод',
+      textarea: {
+        required: "Поле обязательно к заполнению",
+        minLength: "Сообщение должно содержать не менее 10 символов",
+        maxLength: "Сообщение должно содержать не более 300 символов",
       },
     },
   

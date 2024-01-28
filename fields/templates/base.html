@@ -119,7 +119,9 @@
                     </div>
 
                     <!-- Формы обратной связи -->
-                    <form class="form js-form-connection">
+                    <form class="form js-form-connection" method="post" action="{% url 'index:send_email' %}">
+                        {% csrf_token %} 
+                        {{ form.as_p }}
                         
                         <label class="form__descr footer__descr" for="textarea">Нашли недочеты пишите нам на&nbsp;почту</label>
 
@@ -136,6 +138,16 @@
                 </div>
             </div>
         </footer>
+
+
+        {% if messages %}
+            <script>
+                {% for message in messages %}
+                    alert("{{ message }}");
+                {% endfor %}
+            </script>
+        {% endif %}
+    
 
     </body>
 
