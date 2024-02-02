@@ -11,8 +11,8 @@ def news(request: HttpRequest):
     return render(request, 'news/news.html', context)
 
 
-def news_detail(request: HttpRequest, article_title:str):
-    article = get_object_or_404(News_article, title=article_title)
+def news_detail(request: HttpRequest, slug:str):
+    article = get_object_or_404(News_article, slug=slug)
     short_title = article.preview.short_title
     context = {
         "article" : article,

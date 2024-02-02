@@ -5,7 +5,7 @@ app_name = 'tutorials'
 
 urlpatterns = [
     path("", tutorials, name="tutorials_list"),
-    path('<str:title>/', sub_tutorials, name='sub_tutorials'),
-    path('<str:title>/<str:sub_title>/',articles_list, name = "articles-list"),
-    path('<str:title>/<str:sub_title>/<str:article_title>/', article, name='article'),
+    path('<slug:slug_tutorial>/', sub_tutorials, name='sub_tutorials'),
+    path('<slug:slug_tutorial>/<slug:slug_sub_tutorial>/',articles_list, name = "articles-list"),
+    path('<slug:slug_tutorial>/<slug:slug_sub_tutorial>/<slug:slug_article>/', article, name='article'),
 ]

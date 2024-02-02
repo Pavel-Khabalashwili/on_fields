@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block title %}
     Главная
 {% endblock title %}
@@ -15,8 +14,9 @@
     <script src="{% static 'index\js\js-accordion-anim.js' %}" defer></script>
 {% endblock scripts %}
 
-{% block main %}
 
+
+{% block main %}
     <!-- Главная секция "Cамоучитель" -->
     <section class="hero section-offset">
         <div class="container">
@@ -106,12 +106,12 @@
                             <div class="tutor-card__content">
                                 <h3 class="tutor-card__title section-title"> {{ tutorial.title }} </h3>
                                 <p class="tutor-card__descr section-descr-2"> {{ tutorial.short_descr }} </p>
-                                <a href="{% url 'index:tutorials:sub_tutorials' tutorial.title %}"><button class="btn tutor-card__btn">Перейти учиться</button></a>
+                                <a href="{% url 'index:tutorials:sub_tutorials' slug_tutorial=tutorial.slug_tutorial %}"><button class="btn tutor-card__btn">Перейти учиться</button></a>
                             </div>
                             <img src="{{ tutorial.photo.url }}" alt="img" class="tutor-card__img">
                         </div>
                         {% endfor %}
-                        <button class="tutorials__btn btn">другие самоучители</button>
+                        {% comment %} <button class="tutorials__btn btn">другие самоучители</button> {% endcomment %}
                     </div>
                 {% else %}
                     <h3>No tutorials yet</h3>
@@ -132,7 +132,7 @@
                 {% if news %}
                     {% for preview in news %}
                         {% for article in preview.news_article_set.all %}
-                            <a href = "{% url 'index:news:news-detail' article_title=article.title %}" class="news-card small-img">
+                            <a href = "{% url 'index:news:news-detail' slug=article.slug %}" class="news-card small-img">
                                 <div class="news-card__top-content">
                                     <button class="btn news-card__btn">{{ preview.title }}</button>
                                     <time class="news-card__time section-descr">{{ article.pub_date }}</time>
@@ -151,7 +151,7 @@
                     <h3>No news yet</h3>
                 {% endif %}
                 
-                <button class="news__btn btn">другие самоучители</button>
+                {% comment %} <button class="news__btn btn">другие самоучители</button> {% endcomment %}
             </div>
         </div>
     </section>

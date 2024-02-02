@@ -29,10 +29,9 @@
                                 <p class="course__descr section-descr">
                                     {{tutorial.short_descr}}
                                 </p>
-                                {% comment %} {% url 'tutorials:sub_tutorials' tutorial.title %} {% endcomment %}
-                                <a href="{% url 'index:tutorials:sub_tutorials' tutorial.title %}" class="course__link">
+                                <a href="{% url 'index:tutorials:sub_tutorials' slug_tutorial=tutorial.slug_tutorial %}" class="course__link">
                                     <button class="course__btn btn btn__dark">Перейти учиться</button>
-                                </a>
+                                </a> 
                             </div>
                             <img src="{{ tutorial.photo.url }}" alt="" class="course__img">
                         </li>

@@ -31,7 +31,7 @@
                     <div class="news">
                         {% for preview in news %}
                             {% for article in preview.news_article_set.all %}
-                                    <a href="{% url 'index:news:news-detail' article_title=article.title %}" class="news-card small-img">
+                                    <a href="{% url 'index:news:news-detail' slug=article.slug %}" class="news-card small-img">
                                         <div class="news-card__top-content">
                                             <button class="btn news-card__btn">{{ preview.title }}</button>
                                             <time class="news-card__time section-descr white">{{ article.pub_date }}</time>
@@ -51,19 +51,7 @@
                 
             </div>
             
-
-            <!-- Cтраничная навигация -->
-            <div class="pages-nav">
-                <p class="pages-nav__arrow">Назад</p>
-                <ul class="pages-nav__list">
-                    <li class="pages-nav__item pages-nav__item--active">1</li>
-                    <li class="pages-nav__item">2</li>
-                    <li class="pages-nav__item">3</li>
-                    <li class="pages-nav__item">4</li>
-                    <li class="pages-nav__item">5</li>
-                </ul>
-                <p class="pages-nav__arrow">Вперед</p>
-            </div>
+            {% comment %} {% include  'pagination.html' %} {% endcomment %}
 
         </div>
 

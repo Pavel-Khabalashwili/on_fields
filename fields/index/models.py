@@ -4,7 +4,7 @@ from django.db import models
 #-------------------------------------------------------------
 class FAQ(models.Model):
     questions = models.CharField('Вопрос', max_length=100)
-    answer = models.CharField('Ответ', max_length=500)
+    answer = models.TextField('Ответ', max_length=500)
     
     class Meta:
         ordering = ["questions"]

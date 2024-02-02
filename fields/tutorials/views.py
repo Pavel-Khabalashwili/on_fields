@@ -8,8 +8,8 @@ def tutorials(request: HttpRequest):
     }
     return render(request, "tutorials/tutorials.html", context)
 
-def sub_tutorials(request: HttpRequest, title: str):
-    tutorial = get_object_or_404(Tutorial, title=title)
+def sub_tutorials(request: HttpRequest, slug_tutorial: str):
+    tutorial = get_object_or_404(Tutorial, slug_tutorial=slug_tutorial)
     subsections = tutorial.subsections.all()
     context = {
         "tutorial": tutorial,
@@ -17,9 +17,9 @@ def sub_tutorials(request: HttpRequest, title: str):
     }
     return render(request, "tutorials/sub-tutorials.html", context)
 
-def articles_list(request: HttpRequest, title: str, sub_title: str):
-    tutorial = get_object_or_404(Tutorial, title=title)
-    subsection = Tutorial_subsection.objects.get(title=sub_title)
+def articles_list(request: HttpRequest, slug_tutorial: str, slug_sub_tutorial: str):
+    tutorial = get_object_or_404(Tutorial, slug_tutorial=slug_tutorial)
+    subsection = Tutorial_subsection.objects.get(slug_sub_tutorial=slug_sub_tutorial)
     context = {
         "tutorial": tutorial,
         "subsection": subsection,
@@ -27,10 +27,10 @@ def articles_list(request: HttpRequest, title: str, sub_title: str):
     }
     return render(request, "tutorials/articles-list.html", context)
 
-def article(request: HttpRequest, title:str, sub_title:str, article_title:str):
-    tutorial = get_object_or_404(Tutorial, title=title)
-    subsection = Tutorial_subsection.objects.get(title=sub_title)
-    article = Article.objects.get(title=article_title)
+def article(request: HttpRequest, slug_tutorial: str, slug_sub_tutorial: str, slug_article:str):
+    tutorial = get_object_or_404(Tutorial, slug_tutorial=slug_tutorial)
+    subsection = Tutorial_subsection.objects.get(slug_sub_tutorial=slug_sub_tutorial)
+    article = Article.objects.get(slug_article=slug_article)
     context = {
         "subsection": subsection,
         "tutorial": tutorial,

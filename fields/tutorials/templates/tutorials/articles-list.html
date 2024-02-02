@@ -46,7 +46,7 @@
                                 {{article.short_descr}}
                             </p>
 
-                            <a href="{% url 'index:tutorials:article' title=tutorial.title  sub_title=subsection.title article_title=article.title   %}" class="lesson__link">
+                            <a href="{% url 'index:tutorials:article' slug_tutorial=tutorial.slug_tutorial slug_sub_tutorial=subsection.slug_sub_tutorial slug_article=article.slug_article   %}" class="lesson__link">
                                 <button class="lesson__btn btn btn__dark">Читать далее</button>
                             </a>
                             
